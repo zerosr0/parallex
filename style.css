@@ -18,6 +18,9 @@ body{
   height: 200vh;
   background-color: #00110c;
 }
+html{
+  scroll-behavior: smooth;
+}
 
 header{
   display: flex;
@@ -51,14 +54,92 @@ header{
   font-size: 14px;
 }
 
+#right-btns .btn-in-header .pcVs{
+  display: block;
+}
+
+#right-btns .btn-in-header .mbVs{
+  display: none;
+}
+
 #active-menu{
   background-color: #013a3b;
 }
 
 .img-wrapper{
+  display: flex;
+  justify-content: center;
   overflow: hidden;
 }
 
 #main-image{
   min-width: 1000px;
+}
+
+#title-text{
+  text-transform: uppercase;
+  color: #b8e1ee;
+  margin-top:50px;
+  margin-bottom: 40px;
+  font-size: 170%;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+#main-contents-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mountain-tag-wrapper{
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  gap: 100px;
+}
+
+.mountain-content-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mountain-content-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 325px;
+  height: 32px;
+  background-color: #b8e1ee;
+  color: #04120c;
+}
+
+@media screen and (max-width: 1000px) {
+  .mountain-content-list{
+    width: 300px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .mountain-tag-wrapper{
+    flex-direction: column;
+    gap: 40px;
+  }
+  .mountain-content-list{
+    width: 280px;
+    height: 65px;
+  }
+}
+
+@media screen and (max-width: 750px){
+  #right-btns .btn-in-header .pcVs{
+    display: none;
+  }
+  
+  #right-btns .btn-in-header .mbVs{
+    display: block;
+  }
 }

@@ -10,11 +10,17 @@
 
 <body>
 	<header>
-		<a href="#" class="btn-in-header">THE MOUNTAIN</a>
+		<a href="#main-contents-wrapper" class="btn-in-header">THE MOUNTAIN</a>
 		<ul id="right-btns">
 			<li><a href="#" class="btn-in-header" id="active-menu">MOUNTAIN</a></li>
-			<li><a href="#" class="btn-in-header">BEST BLOG</a></li>
-			<li><a href="#" class="btn-in-header">LATEST NEWS</a></li>
+			<li><a href="#" class="btn-in-header">
+					<span class="pcVs">BEST BLOG</span>
+					<span class="mbVs">BLOG</span>
+				</a></li>
+			<li><a href="#" class="btn-in-header">
+					<span class="pcVs">LATEST NEWS</span>
+					<span class="mbVs">NEWS</span>
+				</a></li>
 		</ul>
 	</header>
 	<main role="main">
@@ -1520,6 +1526,19 @@ C1797.15,778.9,1798.64,779.5,1800.82,780.28z" />
 			</svg>
 
 		</div>
+		<div id="main-contents-wrapper">
+			<p id="title-text">Beautiful Golden River Mountain</p>
+			<div class="mountain-tag-wrapper">
+				<ul class="mountain-content-wrapper">
+					<li class="mountain-content-list">Mountain1</li>
+					<li class="mountain-content-list">Mountain2</li>
+				</ul>
+				<ul class="mountain-content-wrapper">
+					<li class="mountain-content-list">Mountain3</li>
+					<li class="mountain-content-list">Mountain4</li>
+				</ul>
+			</div>
+		</div>
 	</main>
 </body>
 
@@ -1538,23 +1557,26 @@ C1797.15,778.9,1798.64,779.5,1800.82,780.28z" />
 	const mountain5 = document.getElementById('mountain5');
 	const mountain6 = document.getElementById('mountain6');
 	const mountain7 = document.getElementById('mountain7');
+	let clientWidth = document.documentElement.clientWidth;
 
 	window.addEventListener("scroll", () => {
-		const scrollY = window.scrollY;
-		sun.style.transform = `translateY(${scrollY * 1.05}px)`;
-		grayCloudsLeft.style.transform = `translateX(${scrollY * 1.3}px)`
-		grayCloudsRight.style.transform = `translateX(-${scrollY * 1.4}px)`
-		whiteClouds.style.transform = `translateX(${scrollY * -0.25}px)`
-		bird1.style.transform = `translateX(${scrollY * 0.8}px)`;
-		bird2.style.transform = `translateX(-${scrollY * 0.25}px)`;
-		bird3.style.transform = `translateX(-${scrollY * 0.25}px)`;
-		mountain1.style.transform = `translateY(${scrollY * 0.7}px)`;
-		mountain2.style.transform = `translateY(${scrollY * 0.75}px)`;
-		mountain3.style.transform = `translateY(${scrollY * 0.6}px)`;
-		mountain4.style.transform = `translateY(${scrollY * 0.5}px)`;
-		mountain5.style.transform = `translateY(${scrollY * 0.4}px)`;
-		mountain6.style.transform = `translateY(${scrollY * 0.3}px)`;
-		mountain7.style.transform = `translateY(${scrollY * 0.1}px)`;
+		if (clientWidth > 750) {
+			const scrollY = window.scrollY;
+			sun.style.transform = `translateY(${scrollY * 1.05}px)`;
+			grayCloudsLeft.style.transform = `translateX(${scrollY * 1.3}px)`
+			grayCloudsRight.style.transform = `translateX(-${scrollY * 1.4}px)`
+			whiteClouds.style.transform = `translateX(${scrollY * -0.25}px)`
+			bird1.style.transform = `translateX(${scrollY * 0.4}px)`;
+			bird2.style.transform = `translateX(-${scrollY * 0.35}px)`;
+			bird3.style.transform = `translateX(-${scrollY * 0.25}px)`;
+			mountain1.style.transform = `translateY(${scrollY * 0.7}px)`;
+			mountain2.style.transform = `translateY(${scrollY * 0.65}px)`;
+			mountain3.style.transform = `translateY(${scrollY * 0.55}px)`;
+			mountain4.style.transform = `translateY(${scrollY * 0.45}px)`;
+			mountain5.style.transform = `translateY(${scrollY * 0.35}px)`;
+			mountain6.style.transform = `translateY(${scrollY * 0.25}px)`;
+			mountain7.style.transform = `translateY(${scrollY * 0.1}px)`;
+		}
 	})
 	document.querySelectorAll('#right-btns .btn-in-header').forEach((btn) => {
 		btn.addEventListener("click", () => {
@@ -1562,6 +1584,36 @@ C1797.15,778.9,1798.64,779.5,1800.82,780.28z" />
 			document.getElementById('active-menu').removeAttribute("id");
 			btn.setAttribute("id", "active-menu");
 		})
+	})
+
+	const link = document.querySelector('a[href="#title-text"]');
+	link.addEventListener("click", (e) => {
+		e.preventDefault();
+		document.querySelector("#title-text").scrollIntoView(
+			{ behavior: 'smooth' }
+		)
+	})
+
+	window.addEventListener("resize", () => {
+		//사이즈가 작아졌을 때(resize됐을 때) 다시 clientWidth 초기화
+		clientWidth = document.documentElement.clientWidth;
+		//모바일 화면에서 패럴렉스가 작동하기 전의 상태로 보이게
+		if (clientWidth <= 750) {
+			sun.style.transform = `translateY(0px)`;
+			grayCloudsLeft.style.transform = `translateX(0x)`
+			grayCloudsRight.style.transform = `translateX(0px)`
+			whiteClouds.style.transform = `translateX(0}px)`
+			bird1.style.transform = `translateX(0x)`;
+			bird2.style.transform = `translateX(0px)`;
+			bird3.style.transform = `translateX(0px)`;
+			mountain1.style.transform = `translateY(0x)`;
+			mountain2.style.transform = `translateY(0px)`;
+			mountain3.style.transform = `translateY(0px)`;
+			mountain4.style.transform = `translateY(0px)`;
+			mountain5.style.transform = `translateY(0px)`;
+			mountain6.style.transform = `translateY(0px)`;
+			mountain7.style.transform = `translateY(0x)`;
+		}
 	})
 </script>
 
